@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button Example</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <style>
+      .hover-div {
+        position: relative;
+        height: 20rem;
+      }
+
+      .background-image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .hidden-paragraph {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+      }
+
+      .overlay {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: grey;
+        opacity: 0.5;
+      }
+
+      .hover-div:hover .overlay {
+        display: block;
+      }
+
+      .hover-div:hover .hidden-paragraph {
+        display: block;
+      }
+    </style>
+
+    <div className="hover-div" style="height: 20rem">
+      <img src="logo.jpg" alt="image" className="background-image" />
+      <p className="hidden-paragraph">hovering</p>
+      <div className="overlay"></div>
+    </div>
+    <!-- <a href="#" className="learn-more-btn">
+        LEARN MORE <span>&#8599;</span>
+    </a> -->
+  </body>
+</html>
