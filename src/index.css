@@ -23,7 +23,7 @@ code {
 .topper {
   padding-top: 5rem !important;
 }
-/* Animation */
+
 .learn-more-btn {
   display: inline-block;
   padding: 10px 20px;
@@ -171,7 +171,7 @@ code {
 
 .circular:hover .circular-button:after {
   transform: translate(-15px, 0) rotate(45deg);
-  background-color: #e8481c;
+  background-color: #181210;
   color: white;
 }
 .hover-div {
@@ -216,9 +216,9 @@ code {
   top: 95%;
   transform: translate(-50%, -50%);
 }
-/* End of Animation */
+
 .h1ss {
-  font-size: 2.5rem !important;
+  font-size: clamp(2rem, 4vw, 2.5rem) !important;
 }
 
 .custom-accordion-button {
@@ -387,24 +387,290 @@ code {
   font-weight: bold;
   color: #333;
 }
-.dot{
-  list-style:disc;
+.dot {
+  list-style: disc;
   color: #6c757d;
 }
-.none{
-  list-style:none;
+.none {
+  list-style: none;
   margin-top: 2rem;
 }
-.space li{
+.space li {
   margin-top: 1rem;
 }
-.circle{
+.circle {
   border-radius: 50%;
   margin-left: -3px;
   background-position: center;
-  opacity: 0.5; 
+  opacity: 0.5;
 }
 .brighten-image {
-  opacity: .9; 
-  filter: brightness(1.4); 
+  opacity: 0.9;
+  filter: brightness(1.4);
+}
+/* Add these styles to your CSS file for better mobile experience */
+@media (max-width: 767px) {
+  .h1s {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .learn-more-btn,
+  .circular-button {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .testimonial-section {
+    margin-top: 2rem;
+  }
+
+  .circle {
+    transition: all 0.3s ease;
+  }
+
+  .brighten-image {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+  }
+}
+/* Add these styles to your CSS file for even better mobile experience */
+@media (max-width: 767px) {
+  .accordion-button {
+    font-size: 0.9rem !important;
+    padding: 15px !important;
+  }
+
+  .accordion-body {
+    padding: 15px !important;
+  }
+
+  .styled-list li {
+    font-size: 0.9rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .custom-image-container {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .custom-image-container {
+    position: sticky;
+    top: 2rem;
+  }
+}
+/* Add these styles to your CSS file for enhanced mobile experience */
+@media (max-width: 767px) {
+  .checked-list li {
+    font-size: 0.95rem !important;
+    padding: 8px 0;
+  }
+
+  .image-container {
+    margin-top: 2rem;
+  }
+
+  .View {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .image-container:hover .position-absolute {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+}
+
+/* Custom checkbox styling if you want to replace the ✓ symbol */
+.checked-list li::before {
+  content: "";
+  color: #28a745;
+  font-weight: bold;
+  margin-right: 8px;
+}
+/* Add these styles for enhanced mobile experience */
+@media (max-width: 767px) {
+  .card-body {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .display-4 {
+    font-size: 2.5rem !important;
+  }
+
+  .display-6 {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .card-body {
+    padding: 2rem 1.5rem !important;
+  }
+}
+
+/* Animation for counting effect (optional) */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-body h1 {
+  animation: countUp 0.6s ease-out;
+}
+/* Enhanced mobile experience */
+@media (max-width: 767px) {
+  .project-card {
+    margin-bottom: 1rem;
+  }
+
+  .project-card .btn {
+    width: 35px !important;
+    height: 35px !important;
+  }
+
+  .badge {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 991px) {
+  .project-card {
+    min-height: 400px;
+  }
+}
+
+/* Loading animation for images */
+.project-card img {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Custom focus states for accessibility */
+.project-card:focus-within {
+  outline: 2px solid #181011;
+  outline-offset: 4px;
+}
+
+/* Enhanced mobile experience */
+@media (max-width: 767px) {
+  .article-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .article-card img {
+    height: 180px !important;
+  }
+
+  .article-card h5 {
+    font-size: 0.95rem !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 991px) {
+  .article-card {
+    min-height: 450px;
+  }
+}
+
+/* Loading states */
+.article-card img {
+  opacity: 0;
+  animation: fadeInImage 0.5s ease-in forwards;
+}
+
+@keyframes fadeInImage {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Focus states for accessibility */
+.article-card:focus-within {
+  outline: 2px solid #333;
+  outline-offset: 4px;
+}
+
+@media (max-width: 767.98px) {
+  .testimonial-carousel .carousel-control-prev,
+  .testimonial-carousel .carousel-control-next {
+    width: 8%;
+  }
+
+  .testimonial-carousel .carousel-indicators {
+    margin-bottom: -30px;
+  }
+
+  .testimonial-carousel .carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .testimonial-image-container {
+    height: 100%;
+    min-height: 300px;
+  }
+}
+
+.star {
+  font-size: clamp(16px, 2.5vw, 20px);
+}
+
+.testimonial-carousel .carousel-item {
+  min-height: 350px;
+}
+
+@media (max-width: 767.98px) {
+  .testimonial-carousel .carousel-item {
+    min-height: auto;
+  }
+}
+
+.hover-link:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+  transform: translateX(5px);
+}
+
+.form-control:focus {
+  border-color: #221b1c;
+  box-shadow: 0 0 0 0.2rem rgba(32, 29, 29, 0.25);
+}
+
+.btn-dark:hover {
+  background-color: #0f0a0a;
+  border-color: #181313;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+@media (max-width: 991.98px) {
+  .formSection {
+    margin-bottom: 2rem;
+  }
 }

@@ -17,14 +17,68 @@ import {
   faSquareTwitter,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
+
 function About() {
+  // Team member data for better organization
+  const teamMembers = [
+    { image: model1, name: "Melanie Bella", role: "CEO" },
+    { image: model5, name: "Jhon Miller", role: "UI/UX Designer" },
+    { image: model6, name: "James Anderson", role: "Web Developer" },
+    { image: model3, name: "Emily Johnson", role: "UI/UX Designer" },
+    { image: model2, name: "Sophia Martinez", role: "Graphic Designer" },
+    { image: model4, name: "Michael Thompson", role: "Marketing Specialist" },
+  ];
+
+  const renderTeamMember = (member, index) => (
+    <div key={index} className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 mb-4">
+      <div className="d-flex flex-column h-100">
+        <div className="position-relative overflow-hidden rounded">
+          <img
+            src={member.image}
+            alt={member.name}
+            className="custom-image background-image w-100"
+            style={{
+              height: "auto",
+              minHeight: "200px",
+              objectFit: "cover",
+              aspectRatio: "3/4",
+            }}
+          />
+          <div className="hidden-paragraph position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center">
+            <span className="mx-1 mx-sm-2 fs-4 fs-sm-3 p-1 text-white">
+              <FontAwesomeIcon icon={faInstagram} />
+            </span>
+            <span className="mx-1 mx-sm-2 fs-4 fs-sm-3 p-1 text-white">
+              <FontAwesomeIcon icon={faSquareFacebook} />
+            </span>
+            <span className="mx-1 mx-sm-2 fs-4 fs-sm-3 p-1 text-white">
+              <FontAwesomeIcon icon={faSquareTwitter} />
+            </span>
+            <span className="mx-1 mx-sm-2 fs-4 fs-sm-3 p-1 text-white">
+              <FontAwesomeIcon icon={faLinkedinIn} />
+            </span>
+          </div>
+          <div className="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+        </div>
+        <div className="mt-3 text-center flex-grow-1">
+          <h4 className="h5 h-sm-4 mb-1 ">{member.name}</h4>
+          <h5 className="h6 h-sm-5 text-danger mb-0">{member.role}</h5>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <div className="container-fluid">
         <div className="max-margin">
           <Nav text={"black"} />
         </div>
+
+        {/* Navigation spacer - only on desktop */}
         <div className="row d-none d-lg-block" style={{ height: "3.2rem" }} />
+
+        {/* Hero Section */}
         <div className="row">
           <div
             className="p-0 m-0 d-flex justify-content-center align-items-center"
@@ -35,207 +89,81 @@ function About() {
               backgroundRepeat: "no-repeat",
               width: "100%",
               height: "25vh",
+              minHeight: "200px",
               zIndex: -1,
             }}
           >
-            <h1 className="h1s">About</h1>
+            <h1
+              className="h1s text-center px-3"
+              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
+            >
+              About
+            </h1>
           </div>
-          <div className="row " style={{ height: "4rem" }} />
+
+          {/* Spacer after hero */}
+          <div className="row d-none d-md-block" style={{ height: "4rem" }} />
+          <div className="row d-block d-md-none" style={{ height: "2rem" }} />
         </div>
+
+        {/* About Segment */}
         <div className="row">
           <AboutSegment background="white" />
         </div>
+
+        {/* Experience Section */}
         <div className="row">
           <Experience background="grey" />
         </div>
-        {/* only main */}
+
+        {/* Team Section */}
         <div className="container-fluid">
-          <div className="row" style={{ height: "8rem" }} />
+          {/* Spacer before team section */}
+          <div className="row d-none d-lg-block" style={{ height: "8rem" }} />
+          <div
+            className="row d-none d-md-block d-lg-none"
+            style={{ height: "4rem" }}
+          />
+          <div className="row d-block d-md-none" style={{ height: "2rem" }} />
+
           <div className="row max-margin">
-            <div className="col-lg-3 col-12">
-              <h6>
-                {" "}
-                <span className="text-danger"> ___</span> &nbsp;
+            {/* Team Section Header */}
+            <div className="col-lg-3 col-12 mb-4 mb-lg-0">
+              <h6 className="text-center text-lg-start">
+                <span className="text-danger">___</span>&nbsp;
                 <span className="text-secondary">Team</span>
               </h6>
-              <h1 className="">Meets Our Professionals Team</h1>
+              <h1
+                className="text-center text-lg-start"
+                style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
+              >
+                Meet Our Professional Team
+              </h1>
             </div>
+
+            {/* Spacer column for desktop */}
             <div className="col-lg-1 d-none d-lg-block"></div>
+
+            {/* Team Members Grid */}
             <div className="col-lg-8 col-12">
-              <div className="row">
-                {" "}
-                <div className="col-lg-6 my-3 col-6 d-flex flex-column py-2">
-                  <div className="d-flex hover-div">
-                    <img
-                      src={model1}
-                      className="custom-image background-image"
-                    />
-                    <div className="hidden-paragraph">
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faInstagram} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareFacebook} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareTwitter} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faLinkedinIn} />
-                      </span>
-                    </div>
-                    <div className="overlay"></div>
-                  </div>
-                  <div className="my-2">
-                    <h4 className="text-center">Melanie Bella</h4>
-                    <h5 className="text-danger text-center">CEO</h5>
-                  </div>
-                </div>
-                <div className="col-lg-6 my-3 col-6 d-flex flex-column py-2">
-                  <div className="d-flex hover-div">
-                    <img
-                      src={model5}
-                      className="custom-image background-image"
-                    />
-                    <div className="hidden-paragraph">
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faInstagram} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareFacebook} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareTwitter} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faLinkedinIn} />
-                      </span>
-                    </div>
-                    <div className="overlay"></div>
-                  </div>
-                  <div className="my-2">
-                    <h4 className="text-center">Jhon Miller</h4>
-                    <h5 className="text-danger text-center">UI/UX Designer</h5>
-                  </div>
-                </div>
-                <div className="col-lg-6 my-3 col-6 d-flex flex-column py-2">
-                  <div className="d-flex hover-div">
-                    <img
-                      src={model6}
-                      className="custom-image background-image"
-                    />
-                    <div className="hidden-paragraph">
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faInstagram} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareFacebook} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareTwitter} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faLinkedinIn} />
-                      </span>
-                    </div>
-                    <div className="overlay"></div>
-                  </div>
-                  <div className="my-2">
-                    <h4 className="text-center">James Anderson</h4>
-                    <h5 className="text-danger text-center">Web Developer</h5>
-                  </div>
-                </div>
-                <div className="col-lg-6 my-3 col-6 d-flex flex-column py-2">
-                  <div className="d-flex hover-div">
-                    <img
-                      src={model3}
-                      className="custom-image background-image"
-                    />
-                    <div className="hidden-paragraph">
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faInstagram} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareFacebook} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareTwitter} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faLinkedinIn} />
-                      </span>
-                    </div>
-                    <div className="overlay"></div>
-                  </div>
-                  <div className="my-2">
-                    <h4 className="text-center">Emily Johnson</h4>
-                    <h5 className="text-danger text-center">UI/UX Designer</h5>
-                  </div>
-                </div>
-                <div className="col-lg-6 my-3 col-6 d-flex flex-column py-2">
-                  <div className="d-flex hover-div">
-                    <img
-                      src={model2}
-                      className="custom-image background-image"
-                    />
-                    <div className="hidden-paragraph">
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faInstagram} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareFacebook} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareTwitter} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faLinkedinIn} />
-                      </span>
-                    </div>
-                    <div className="overlay"></div>
-                  </div>
-                  <div className="my-2">
-                    <h4 className="text-center">Sophia Martinez</h4>
-                    <h5 className="text-danger text-center">
-                      Graphic Designer
-                    </h5>
-                  </div>
-                </div>
-                <div className="col-lg-6 my-3 col-6 d-flex flex-column py-2">
-                  <div className="d-flex hover-div">
-                    <img
-                      src={model4}
-                      className="custom-image background-image"
-                    />
-                    <div className="hidden-paragraph">
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faInstagram} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareFacebook} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faSquareTwitter} />
-                      </span>
-                      <span className="mx-2 fs-3 p-1">
-                        <FontAwesomeIcon icon={faLinkedinIn} />
-                      </span>
-                    </div>
-                    <div className="overlay"></div>
-                  </div>
-                  <div className="my-2">
-                    <h4 className="text-center">Michael Thompson</h4>
-                    <h5 className="text-danger text-center">
-                      Marketing Specialist
-                    </h5>
-                  </div>
-                </div>
+              <div className="row g-3 g-sm-4">
+                {teamMembers.map((member, index) =>
+                  renderTeamMember(member, index)
+                )}
               </div>
             </div>
           </div>
         </div>
-        <div className="row" style={{ height: "8rem" }} />
+
+        {/* Bottom spacer */}
+        <div className="row d-none d-lg-block" style={{ height: "8rem" }} />
+        <div
+          className="row d-none d-md-block d-lg-none"
+          style={{ height: "4rem" }}
+        />
+        <div className="row d-block d-md-none" style={{ height: "2rem" }} />
       </div>
+
       <Footer />
     </>
   );

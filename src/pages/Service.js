@@ -6,6 +6,7 @@ import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../component/Segment/Footer";
 import ServiceSegment from "../component/Segment/ServiceSegment";
 import Testimonial from "../component/Segment/Testimnonial";
+
 function Service() {
   return (
     <>
@@ -14,6 +15,8 @@ function Service() {
           <Nav text={"black"} />
         </div>
         <div className="row d-none d-lg-block" style={{ height: "3.2rem" }} />
+
+        {/* Hero Section */}
         <div className="row">
           <div
             className="p-0 m-0 d-flex justify-content-center align-items-center"
@@ -24,42 +27,57 @@ function Service() {
               backgroundRepeat: "no-repeat",
               width: "100%",
               height: "25vh",
+              minHeight: "200px", // Ensure minimum height on very small screens
               zIndex: -1,
             }}
           >
-            <h1 className="h1s">Service</h1>
+            <h1 className="h1s display-4 display-md-3 text-center px-3">
+              Service
+            </h1>
           </div>
-          <div className="row " style={{ height: "4rem" }} />
+
+          {/* Responsive spacing */}
+          <div className="row" style={{ height: "2rem" }} />
+          <div className="row d-none d-md-block" style={{ height: "2rem" }} />
+
+          {/* Services Section */}
           <div className="">
             <ServiceSegment type="service" />
-            <div className="row " style={{ height: "1rem" }} />
-            <div className="max-margin">
+            <div className="row" style={{ height: "1rem" }} />
+            <div className="max-margin px-3 px-md-0">
               <hr className="bg-secondary" />
             </div>
           </div>
+
+          {/* FAQ Section */}
           <div className="">
-            <div className="max-margin">
-              <div className="row " style={{ height: "6rem" }} />
+            <div className="max-margin px-3 px-md-0">
+              {/* Responsive spacing */}
+              <div className="row" style={{ height: "3rem" }} />
+              <div
+                className="row d-none d-md-block"
+                style={{ height: "3rem" }}
+              />
+
               <div className="row">
-                <div className="col-12 text-center text-secondary">
-                  <h4>
-                    {" "}
-                    <span className="text-danger"> ___</span> &nbsp;FAQ's
+                <div className="col-12 text-center text-secondary mb-4">
+                  <h4 className="h5 h4-md">
+                    <span className="text-danger">___</span> &nbsp;FAQ's
                   </h4>
                 </div>
+
                 <div className="col-12">
-                  {/* Accordion */}
+                  {/* Mobile-Responsive Accordion */}
                   <div className="d-flex flex-column">
                     <div
-                      className="accordion  w-100"
+                      className="accordion w-100"
                       id="accordion1Example"
                       style={{
-                        objectFit: "cover",
-                        width: "100%",
-                        height: "37rem",
                         borderRadius: "15px",
+                        minHeight: "auto", // Remove fixed height for mobile
                       }}
                     >
+                      {/* Hidden accordion item for structure */}
                       <div className="accordion-item d-none">
                         <h2 className="accordion-header" id="headingOne">
                           <button
@@ -76,23 +94,25 @@ function Service() {
                           <div className="accordion-body"></div>
                         </div>
                       </div>
-                      <div className="accordion-item">
+
+                      {/* FAQ Items */}
+                      <div className="accordion-item border-0 border-bottom">
                         <h2
                           className="accordion-header"
                           id="accordion1-headingOne"
                         >
                           <button
-                            className="accordion-button custom-accordion-button bg-transparent"
+                            className="accordion-button custom-accordion-button bg-transparent py-3 px-2 px-md-3"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#accordion1-collapseOne"
                             aria-expanded="true"
                             aria-controls="accordion1-collapseOne"
                           >
-                            <span className="fs-4 text-black ms-2">
+                            <span className="fs-5 fs-md-4 text-black ms-1 ms-md-2 flex-grow-1 text-start">
                               What services does Saint offer?
                             </span>
-                            <span className="accordion-arrow fs-4 text-black ms-auto">
+                            <span className="accordion-arrow fs-5 fs-md-4 text-black ms-2">
                               <FontAwesomeIcon icon={faArrowCircleRight} />
                             </span>
                           </button>
@@ -102,8 +122,8 @@ function Service() {
                           className="accordion-collapse collapse show"
                           data-bs-parent="#accordion1Example"
                         >
-                          <div className="ms-2 accordion-body text-secondary">
-                            <p>
+                          <div className="ms-1 ms-md-2 accordion-body text-secondary px-2 px-md-3">
+                            <p className="mb-0">
                               The cost of our web design services varies
                               depending on the scope and complexity of the
                               project. We offer customized quotes based on your
@@ -114,24 +134,24 @@ function Service() {
                         </div>
                       </div>
 
-                      <div className="accordion-item">
+                      <div className="accordion-item border-0 border-bottom">
                         <h2
                           className="accordion-header"
                           id="accordion1-headingTwo"
                         >
                           <button
-                            className="accordion-button custom-accordion-button bg-transparent"
+                            className="accordion-button custom-accordion-button bg-transparent py-3 px-2 px-md-3"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#accordion1-collapseTwo"
                             aria-expanded="false"
                             aria-controls="accordion1-collapseTwo"
                           >
-                            <span className="fs-4 text-black ms-2">
+                            <span className="fs-5 fs-md-4 text-black ms-1 ms-md-2 flex-grow-1 text-start">
                               How long does it take to design and develop a
                               website?
                             </span>
-                            <span className="accordion-arrow fs-4 text-black ms-auto">
+                            <span className="accordion-arrow fs-5 fs-md-4 text-black ms-2">
                               <FontAwesomeIcon icon={faArrowCircleRight} />
                             </span>
                           </button>
@@ -141,8 +161,8 @@ function Service() {
                           className="accordion-collapse collapse"
                           data-bs-parent="#accordion1Example"
                         >
-                          <div className="accordion-body text-secondary">
-                            <p>
+                          <div className="accordion-body text-secondary px-2 px-md-3">
+                            <p className="mb-0">
                               The timeline for designing and developing a
                               website depends on the project's size and
                               complexity. On average, a standard website can
@@ -154,23 +174,23 @@ function Service() {
                         </div>
                       </div>
 
-                      <div className="accordion-item">
+                      <div className="accordion-item border-0 border-bottom">
                         <h2
                           className="accordion-header"
                           id="accordion1-headingThree"
                         >
                           <button
-                            className="accordion-button custom-accordion-button bg-transparent"
+                            className="accordion-button custom-accordion-button bg-transparent py-3 px-2 px-md-3"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#accordion1-collapseThree"
                             aria-expanded="false"
                             aria-controls="accordion1-collapseThree"
                           >
-                            <span className="fs-4 text-black ms-2">
+                            <span className="fs-5 fs-md-4 text-black ms-1 ms-md-2 flex-grow-1 text-start">
                               Do you offer website maintenance and support?
                             </span>
-                            <span className="accordion-arrow fs-4 text-black ms-auto">
+                            <span className="accordion-arrow fs-5 fs-md-4 text-black ms-2">
                               <FontAwesomeIcon icon={faArrowCircleRight} />
                             </span>
                           </button>
@@ -180,8 +200,8 @@ function Service() {
                           className="accordion-collapse collapse"
                           data-bs-parent="#accordion1Example"
                         >
-                          <div className="accordion-body text-secondary">
-                            <p>
+                          <div className="accordion-body text-secondary px-2 px-md-3">
+                            <p className="mb-0">
                               Yes, we offer ongoing website maintenance and
                               support services to ensure your site remains
                               up-to-date, secure, and fully functional. Our
@@ -192,23 +212,23 @@ function Service() {
                         </div>
                       </div>
 
-                      <div className="accordion-item">
+                      <div className="accordion-item border-0 border-bottom">
                         <h2
                           className="accordion-header"
                           id="accordion1-headingFour"
                         >
                           <button
-                            className="accordion-button custom-accordion-button bg-transparent"
+                            className="accordion-button custom-accordion-button bg-transparent py-3 px-2 px-md-3"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#accordion1-collapseFour"
                             aria-expanded="false"
                             aria-controls="accordion1-collapseFour"
                           >
-                            <span className="fs-4 text-black ms-2">
+                            <span className="fs-5 fs-md-4 text-black ms-1 ms-md-2 flex-grow-1 text-start">
                               Can you help with SEO and digital marketing?
                             </span>
-                            <span className="accordion-arrow fs-4 text-black ms-auto">
+                            <span className="accordion-arrow fs-5 fs-md-4 text-black ms-2">
                               <FontAwesomeIcon icon={faArrowCircleRight} />
                             </span>
                           </button>
@@ -218,8 +238,8 @@ function Service() {
                           className="accordion-collapse collapse"
                           data-bs-parent="#accordion1Example"
                         >
-                          <div className="accordion-body text-secondary">
-                            <p>
+                          <div className="accordion-body text-secondary px-2 px-md-3">
+                            <p className="mb-0">
                               Absolutely! Our SEO and digital marketing services
                               are designed to increase your online visibility,
                               drive traffic to your site, and boost your search
@@ -230,24 +250,24 @@ function Service() {
                         </div>
                       </div>
 
-                      <div className="accordion-item">
+                      <div className="accordion-item border-0 border-bottom">
                         <h2
                           className="accordion-header"
                           id="accordion1-headingFive"
                         >
                           <button
-                            className="accordion-button custom-accordion-button bg-transparent"
+                            className="accordion-button custom-accordion-button bg-transparent py-3 px-2 px-md-3"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#accordion1-collapseFive"
                             aria-expanded="false"
                             aria-controls="accordion1-collapseFive"
                           >
-                            <span className="fs-4 text-black ms-2">
+                            <span className="fs-5 fs-md-4 text-black ms-1 ms-md-2 flex-grow-1 text-start">
                               Do you provide custom solutions for e-commerce
                               websites?
                             </span>
-                            <span className="accordion-arrow fs-4 text-black ms-auto">
+                            <span className="accordion-arrow fs-5 fs-md-4 text-black ms-2">
                               <FontAwesomeIcon icon={faArrowCircleRight} />
                             </span>
                           </button>
@@ -257,8 +277,8 @@ function Service() {
                           className="accordion-collapse collapse"
                           data-bs-parent="#accordion1Example"
                         >
-                          <div className="accordion-body text-secondary">
-                            <p>
+                          <div className="accordion-body text-secondary px-2 px-md-3">
+                            <p className="mb-0">
                               Yes, we specialize in developing custom e-commerce
                               solutions tailored to your business requirements.
                               From user-friendly product pages to secure payment
@@ -268,23 +288,24 @@ function Service() {
                           </div>
                         </div>
                       </div>
-                      <div className="accordion-item">
+
+                      <div className="accordion-item border-0">
                         <h2
                           className="accordion-header"
                           id="accordion1-headingSix"
                         >
                           <button
-                            className="accordion-button custom-accordion-button bg-transparent"
+                            className="accordion-button custom-accordion-button bg-transparent py-3 px-2 px-md-3"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#accordion1-collapseSix"
                             aria-expanded="false"
                             aria-controls="accordion1-collapseSix"
                           >
-                            <span className="fs-4 text-black ms-2">
+                            <span className="fs-5 fs-md-4 text-black ms-1 ms-md-2 flex-grow-1 text-start">
                               How much do your web design services cost?
                             </span>
-                            <span className="accordion-arrow fs-4 text-black ms-auto">
+                            <span className="accordion-arrow fs-5 fs-md-4 text-black ms-2">
                               <FontAwesomeIcon icon={faArrowCircleRight} />
                             </span>
                           </button>
@@ -294,17 +315,19 @@ function Service() {
                           className="accordion-collapse collapse"
                           data-bs-parent="#accordion1Example"
                         >
-                          <div className="accordion-body text-secondary">
-                            <p>
-                              Yes, we specialize in developing custom e-commerce
-                              solutions tailored to your business requirements.
-                              From user-friendly product pages to secure payment
-                              gateways, we ensure a seamless shopping experience
-                              for your customers.
+                          <div className="accordion-body text-secondary px-2 px-md-3">
+                            <p className="mb-0">
+                              The cost of our web design services varies
+                              depending on the scope and complexity of the
+                              project. We offer customized quotes based on your
+                              specific needs and goals. Contact us for a free
+                              consultation and quote.
                             </p>
                           </div>
                         </div>
                       </div>
+
+                      {/* Hidden accordion item for structure */}
                       <div className="accordion-item d-none">
                         <h2 className="accordion-header" id="headingFive">
                           <button
@@ -325,9 +348,18 @@ function Service() {
                 </div>
               </div>
             </div>
-            <div className="row " style={{ height: "2rem" }} />
+
+            {/* Responsive spacing */}
+            <div className="row" style={{ height: "2rem" }} />
+            <div className="row d-none d-md-block" style={{ height: "2rem" }} />
+
+            {/* Testimonial Section */}
             <Testimonial background="white" />
-            <div className="row " style={{ height: "2rem" }} />
+
+            {/* Responsive spacing */}
+            <div className="row" style={{ height: "2rem" }} />
+
+            {/* Footer */}
             <div className="row">
               <Footer />
             </div>

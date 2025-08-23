@@ -29,7 +29,7 @@ function Blog() {
           <div className="">
             <NewsInsight type="blog" />
           </div>
-          <div className="row">
+          <div className="row m-0 p-0">
             <Footer />
           </div>
         </div>

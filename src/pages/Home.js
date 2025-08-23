@@ -20,28 +20,42 @@ import PP4 from "../component/images/PP4.jpg";
 const Home = () => {
   const scrollH = 1500;
   const { scrollY } = useScroll();
+  const [isMobile, setIsMobile] = useState(false);
 
   const backgroundSize = useTransform(scrollY, [0, scrollH], ["50%", "200%"]);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Check for mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleSelect = (selectedIndex, e) => {
     setActiveIndex(selectedIndex);
   };
+
   return (
     <>
       <div className="">
         <ParallaxProvider className="">
-          <Parallax speed={-20}>
+          <Parallax speed={isMobile ? -5 : -20}>
             <motion.div
               className="topper bg-black text-light"
               style={{
-                backgroundSize,
+                backgroundSize: isMobile ? "cover" : backgroundSize,
                 backgroundImage: `url(${earth})`,
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 width: "100%",
                 zIndex: -1,
+                minHeight: isMobile ? "100vh" : "auto",
               }}
             >
               <div className="max-margin topper">
@@ -50,15 +64,18 @@ const Home = () => {
               <div className="container-fluid">
                 {/* Parallax Header */}
                 <div className="max-margin">
-                  <div className="row px-lg-4">
-                    <div className="col-12 col-lg-6 text-wrap">
-                      <h1 className="h1s">
+                  <div className="row px-2 px-md-3 px-lg-4">
+                    {/* Main Heading - Full width on mobile */}
+                    <div className="col-12 text-wrap mb-4 mb-lg-0">
+                      <h1 className="h1s display-4 display-md-3 display-lg-2">
                         Innovative Web Solutions for Modern Business
                       </h1>
                     </div>
+
+                    {/* Description */}
                     <div className="row">
-                      <div className="col-12 col-lg-5 mt-4">
-                        <p className="fs-5">
+                      <div className="col-12 col-md-10 col-lg-5 mt-2 mt-md-3 mt-lg-4">
+                        <p className="fs-6 fs-md-5 lh-base">
                           We specialize in creating stunning, user-friendly
                           websites that not only look great but also drive
                           business growth. Our team of experienced designers and
@@ -68,19 +85,22 @@ const Home = () => {
                         </p>
                       </div>
                     </div>
+
+                    {/* Buttons and Testimonial Section */}
                     <div className="row">
-                      <div className="col-lg-6 col-12 mt-4">
-                        <button className="learn-more-btn me-4">
-                          {" "}
-                          LEARN MORE <span>&#8599;</span>{" "}
-                        </button>
-                        <button className="ms-4 ps-4 circular-button">
-                          <span className="ms-4">Consult Saint</span>
-                        </button>
+                      {/* Buttons - Stack on mobile */}
+                      <div className="col-12 col-lg-6 mt-3 mt-lg-4">
+                        <div className="d-flex flex-column flex-sm-row gap-3 gap-sm-0">
+                          <button className="learn-more-btn flex-sm-auto me-sm-4 mb-3 mb-sm-0">
+                            LEARN MORE <span>&#8599;</span>
+                          </button>
+
+                        </div>
                       </div>
-                      <div className="col-lg-6 pt-4 col-12 mt-4 d-flex flex-column justify-content-end">
-                        {/* Carousel */}
-                        <div className="">
+
+                      {/* Testimonial Carousel - Better mobile spacing */}
+                      <div className="col-12 col-lg-6 mt-4 mt-lg-4 d-flex flex-column justify-content-end">
+                        <div className="testimonial-section">
                           <Carousel
                             activeIndex={activeIndex}
                             onSelect={handleSelect}
@@ -92,17 +112,12 @@ const Home = () => {
                           >
                             <Carousel.Item className="justify-content-end align-items-stretch p-0">
                               <div className="row d-flex">
-                                <div className="col-3 m-0">
-                                  <button className="btn btn-lg d-none btn-light p-2">
-                                    <h1>01</h1>
-                                  </button>
-                                </div>
-                                <div className="col-9 p-0">
-                                  <h5 className="lh-base h-100">
+                                <div className="col-12 p-0">
+                                  <h5 className="lh-base h-100 fs-6 fs-md-5">
                                     Thanks to Saint company, our website is now
                                     a powerful tool for reaching new customers.
                                     Their expertise in web design and
-                                    development is evident in every detail.The
+                                    development is evident in every detail. The
                                     responsive design and seamless functionality
                                     of our new website are exactly what we
                                     needed.
@@ -112,13 +127,8 @@ const Home = () => {
                             </Carousel.Item>
                             <Carousel.Item className="justify-content-end align-items-stretch p-0">
                               <div className="row d-flex">
-                                <div className="col-3 m-0">
-                                  <button className="btn btn-lg d-none btn-light p-2">
-                                    <h1>02</h1>
-                                  </button>
-                                </div>
-                                <div className="col-9 p-0">
-                                  <h5 className="lh-base h-100">
+                                <div className="col-12 p-0">
+                                  <h5 className="lh-base h-100 fs-6 fs-md-5">
                                     Our website has become a potent, wonderful
                                     tool for attracting new customers. Their
                                     proficiency in web design and development
@@ -131,13 +141,8 @@ const Home = () => {
                             </Carousel.Item>
                             <Carousel.Item className="justify-content-end align-items-stretch p-0">
                               <div className="row d-flex">
-                                <div className="col-3 m-0">
-                                  <button className="btn btn-lg d-none btn-light p-2">
-                                    <h1>03</h1>
-                                  </button>
-                                </div>
-                                <div className="col-9 p-0">
-                                  <h5 className="lh-base h-100">
+                                <div className="col-12 p-0">
+                                  <h5 className="lh-base h-100 fs-6 fs-md-5">
                                     Our website has evolved into a powerful
                                     instrument for drawing in new clientele. The
                                     expertise in web design and development is
@@ -151,13 +156,8 @@ const Home = () => {
                             </Carousel.Item>
                             <Carousel.Item className="justify-content-end align-items-stretch p-0">
                               <div className="row d-flex">
-                                <div className="col-3 m-0">
-                                  <button className="btn btn-lg d-none btn-light p-2">
-                                    <h1>04</h1>
-                                  </button>
-                                </div>
-                                <div className="col-9 p-0">
-                                  <h5 className="lh-base h-100">
+                                <div className="col-12 p-0">
+                                  <h5 className="lh-base h-100 fs-6 fs-md-5">
                                     Our website has transformed into a mighty
                                     tool for attracting new customers. The skill
                                     in web design and development shines through
@@ -169,46 +169,73 @@ const Home = () => {
                               </div>
                             </Carousel.Item>
                           </Carousel>
-                          <div className="justify-content-end mt-4  align-items-stretch p-0">
+
+                          {/* Profile Pictures - Better mobile layout */}
+                          <div className="justify-content-start justify-md-end mt-3 mt-md-4 align-items-stretch p-0">
                             <div className="row d-flex">
-                              <div className="col-3 m-0"></div>
-                              <div className="col-9  p-0">
-                                <img
-                                  src={PP1}
-                                  width="48px"
-                                  height="43px"
-                                  alt="Speaker1"
-                                  className={`circle ${
-                                    activeIndex == 0 ? "brighten-image" : ""
-                                  }`}
-                                />
-                                <img
-                                  src={PP2}
-                                  width="48px"
-                                  height="43px"
-                                  alt="Speaker1"
-                                  className={`circle ${
-                                    activeIndex == 1 ? "brighten-image" : ""
-                                  }`}
-                                />
-                                <img
-                                  src={PP3}
-                                  width="48px"
-                                  height="43px"
-                                  alt="Speaker1"
-                                  className={`circle ${
-                                    activeIndex == 2 ? "brighten-image" : ""
-                                  }`}
-                                />
-                                <img
-                                  src={PP4}
-                                  width="48px"
-                                  height="43px"
-                                  alt="Speaker1"
-                                  className={`circle ${
-                                    activeIndex == 3 ? "brighten-image" : ""
-                                  }`}
-                                />
+                              <div className="col-12 p-0">
+                                <div className="d-flex gap-2 justify-content-start justify-md-end">
+                                  <img
+                                    src={PP1}
+                                    width="40"
+                                    height="40"
+                                    alt="Speaker1"
+                                    className={`circle ${
+                                      activeIndex === 0 ? "brighten-image" : ""
+                                    }`}
+                                    style={{
+                                      borderRadius: "50%",
+                                      objectFit: "cover",
+                                      cursor: "pointer",
+                                    }}
+                                    onClick={() => setActiveIndex(0)}
+                                  />
+                                  <img
+                                    src={PP2}
+                                    width="40"
+                                    height="40"
+                                    alt="Speaker2"
+                                    className={`circle ${
+                                      activeIndex === 1 ? "brighten-image" : ""
+                                    }`}
+                                    style={{
+                                      borderRadius: "50%",
+                                      objectFit: "cover",
+                                      cursor: "pointer",
+                                    }}
+                                    onClick={() => setActiveIndex(1)}
+                                  />
+                                  <img
+                                    src={PP3}
+                                    width="40"
+                                    height="40"
+                                    alt="Speaker3"
+                                    className={`circle ${
+                                      activeIndex === 2 ? "brighten-image" : ""
+                                    }`}
+                                    style={{
+                                      borderRadius: "50%",
+                                      objectFit: "cover",
+                                      cursor: "pointer",
+                                    }}
+                                    onClick={() => setActiveIndex(2)}
+                                  />
+                                  <img
+                                    src={PP4}
+                                    width="40"
+                                    height="40"
+                                    alt="Speaker4"
+                                    className={`circle ${
+                                      activeIndex === 3 ? "brighten-image" : ""
+                                    }`}
+                                    style={{
+                                      borderRadius: "50%",
+                                      objectFit: "cover",
+                                      cursor: "pointer",
+                                    }}
+                                    onClick={() => setActiveIndex(3)}
+                                  />
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -217,16 +244,20 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Marquee Section */}
                 <div className="row">
-                  <div className="marquee-container col-12 mt-lg-4 m-0 p-0 pt-lg-4 bg-black">
-                    {/* Marquee */}
+                  <div className="marquee-container col-12 mt-3 mt-lg-4 m-0 p-0 pt-3 pt-lg-4 bg-black">
                     <Marquee />
                   </div>
                 </div>
               </div>
             </motion.div>
+
             <div className="container-fluid p-0">
               <div className="d-none d-lg-block" style={{ height: "10rem" }} />
+              <div className="d-block d-lg-none" style={{ height: "2rem" }} />
+
               {/* Our Services */}
               <ServiceSegment />
               {/* About Us */}
@@ -246,4 +277,5 @@ const Home = () => {
     </>
   );
 };
+
 export default Home;

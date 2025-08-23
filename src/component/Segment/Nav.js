@@ -18,7 +18,7 @@ function Nav({ text }) {
 
   return (
     <>
-      <div className=" p-0">
+      <div className="p-0">
         <div className="row d-none d-lg-block">
           <div className="d-flex align-items-center">
             <h4 className="me-auto">
@@ -44,7 +44,7 @@ function Nav({ text }) {
             </span>
           </div>
         </div>
-        <div className="row  mt-4 mt-lg-0 pt-4 pt-lg-0">
+        <div className="row mt-0 mt-lg-0 pt-0 pt-lg-0">
           <div className="col-12 p-0">
             <nav className="navbar navbar-expand-lg">
               <div className="container-fluid">

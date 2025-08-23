@@ -26,7 +26,7 @@ function Contact() {
           >
             <h1 className="h1s">Contact</h1>
           </div>
-          <div className="my-4">
+          <div className="mt-4">
             <Form />
             <div className="row">
               <Footer />

@@ -1,91 +1,282 @@
-import React from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faInstagram,
+  faTwitter,
+  faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faMapMarkerAlt,
+  faPhone,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Form() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log("Form submitted:", formData);
+  };
+
+  const socialLinks = [
+    { name: "Facebook", icon: faFacebookF, url: "https://facebook.com" },
+    { name: "Instagram", icon: faInstagram, url: "https://instagram.com" },
+    { name: "Twitter", icon: faTwitter, url: "https://twitter.com" },
+    { name: "LinkedIn", icon: faLinkedinIn, url: "https://linkedin.com" },
+  ];
+
   return (
     <>
-      <div className="row mt-4 max-margin">
-        <div className="col-12">
-          <h5>
-            {" "}
-            <span className="text-danger"> ___</span> &nbsp; Contact
+      <div className="row mt-4 max-margin px-2 px-sm-3">
+        {/* Section Header */}
+        <div className="col-12 mb-4">
+          <h5 className="mb-3">
+            <span className="text-danger">___</span>&nbsp;Contact
           </h5>
-          <h1 className="h1ss">Join Us in Creating Something Great </h1>
+          <h1
+            className="h1ss"
+            style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
+          >
+            Join Us in Creating Something Great
+          </h1>
         </div>
-        <div className="row">
-          <div className="col-7 border-radius">
-            <div className="formSection text-secondary px-4 py-4 border-radius">
-              <h1 className="mb-4">Leave a Comment</h1>
 
-              <div className="pt-2 my-3 px-2 mx-0 w-100">
-                <form className="row mx-0 px-0">
-                  <div className="col-6 form-floating mb-3">
-                    <input
-                      type="text"
-                      className="form-control bg-secondary-subtle"
-                      id="floatingInput"
-                      placeholder=""
-                    />
-                    <label for="floatingInput"> &nbsp;&nbsp; Name</label>
-                  </div>
-                  <div className="col-6 form-floating mb-3">
-                    <input
-                      type="email"
-                      className="form-control bg-secondary-subtle"
-                      id="floatingInput"
-                      placeholder=""
-                    />
-                    <label for="floatingInput">&nbsp;&nbsp;Email</label>
-                  </div>
+        <div className="row g-4">
+          {/* Contact Form Section */}
+          <div className="col-12 col-lg-7">
+            <div className="formSection text-secondary p-3 p-sm-4 border-radius bg-white shadow-sm">
+              <h1
+                className="mb-4 text-center text-lg-start"
+                style={{ fontSize: "clamp(1.3rem, 3vw, 2rem)" }}
+              >
+                Leave a Comment
+              </h1>
 
-                  <div className="mb-3">
+              <form onSubmit={handleSubmit} className="w-100">
+                {/* Name and Email Row */}
+                <div className="row g-3 mb-3">
+                  <div className="col-12 col-sm-6">
                     <div className="form-floating">
-                      <textarea
+                      <input
+                        type="text"
+                        name="name"
                         className="form-control bg-secondary-subtle"
-                        placeholder="Leave a comment here"
-                        id="floatingTextarea2"
-                        style={{ height: "300px" }}
-                      ></textarea>
-                      <label for="floatingTextarea2">Message</label>
+                        id="floatingName"
+                        placeholder="Your Name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                      />
+                      <label htmlFor="floatingName">Name</label>
                     </div>
                   </div>
+                  <div className="col-12 col-sm-6">
+                    <div className="form-floating">
+                      <input
+                        type="email"
+                        name="email"
+                        className="form-control bg-secondary-subtle"
+                        id="floatingEmail"
+                        placeholder="your@email.com"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                      />
+                      <label htmlFor="floatingEmail">Email</label>
+                    </div>
+                  </div>
+                </div>
 
-                  <button
-                    type="submit"
-                    className="btn btn-black text-white w-100"
-                  >
-                    Sign Up
-                  </button>
-                </form>
-              </div>
-              <div className="row " style={{ height: "2rem" }} />
+                {/* Message Textarea */}
+                <div className="mb-4">
+                  <div className="form-floating">
+                    <textarea
+                      name="message"
+                      className="form-control bg-secondary-subtle"
+                      placeholder="Leave a comment here"
+                      id="floatingTextarea"
+                      style={{
+                        height: "200px",
+                        minHeight: "150px",
+                        resize: "vertical",
+                      }}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                    ></textarea>
+                    <label htmlFor="floatingTextarea">Message</label>
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className="btn btn-dark text-white w-100 py-3"
+                  style={{
+                    fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
+                    fontWeight: "600",
+                    borderRadius: "8px",
+                  }}
+                >
+                  Send Message
+                </button>
+              </form>
             </div>
           </div>
-          <div className="col-5 border-radius bg-secondary-subtle p-4">
-            <h2 className="text-secondary my-3">Address</h2>
-            <h2 className="my-4 py-3">
-              Plot 23-24, Darrow Road, Valley Industrial Estate, Lagos, Nigeria
-            </h2>
-            <h2 className="text-secondary my-3">Phone</h2>
-            <h2 className="my-3 py-2">+234 705 8925 042</h2>
-            <h3 className="my-3 py-2">Media Social</h3>
-            <div className="row">
-              <div className="col-6">
-                <p>Facebook</p>
+
+          {/* Contact Information Section */}
+          <div className="col-12 col-lg-5">
+            <div className="border-radius bg-secondary-subtle p-3 p-sm-4 h-100">
+              {/* Address Section */}
+              <div className="mb-4">
+                <div className="d-flex align-items-center mb-3">
+                  <FontAwesomeIcon
+                    icon={faMapMarkerAlt}
+                    className="text-dark me-3"
+                    style={{ fontSize: "1.2rem" }}
+                  />
+                  <h3
+                    className="text-secondary mb-0"
+                    style={{ fontSize: "clamp(1.1rem, 3vw, 1.5rem)" }}
+                  >
+                    Address
+                  </h3>
+                </div>
+                <p
+                  className="ms-4 ms-sm-5 lh-base"
+                  style={{
+                    fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
+                    color: "#333",
+                  }}
+                >
+                  Plot 23-24, Darrow Road, Valley Industrial Estate, Lagos,
+                  Nigeria
+                </p>
               </div>
-              <div className="col-6">
-                <p>Instagram</p>
+
+              {/* Phone Section */}
+              <div className="mb-4">
+                <div className="d-flex align-items-center mb-3">
+                  <FontAwesomeIcon
+                    icon={faPhone}
+                    className="text-dark me-3"
+                    style={{ fontSize: "1.2rem" }}
+                  />
+                  <h3
+                    className="text-secondary mb-0"
+                    style={{ fontSize: "clamp(1.1rem, 3vw, 1.5rem)" }}
+                  >
+                    Phone
+                  </h3>
+                </div>
+                <p
+                  className="ms-4 ms-sm-5 mb-0"
+                  style={{
+                    fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
+                    color: "#333",
+                  }}
+                >
+                  <a
+                    href="tel:+2347058925042"
+                    className="text-decoration-none text-dark"
+                  >
+                    +234 705 892 5042
+                  </a>
+                </p>
               </div>
-              <div className="col-6">
-                <p>Twitter</p>
+
+              {/* Email Section */}
+              <div className="mb-4">
+                <div className="d-flex align-items-center mb-3">
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className="text-dark me-3"
+                    style={{ fontSize: "1.2rem" }}
+                  />
+                  <h3
+                    className="text-secondary mb-0"
+                    style={{ fontSize: "clamp(1.1rem, 3vw, 1.5rem)" }}
+                  >
+                    Email
+                  </h3>
+                </div>
+                <p
+                  className="ms-4 ms-sm-5 mb-0"
+                  style={{
+                    fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
+                    color: "#333",
+                  }}
+                >
+                  <a
+                    href="mailto:info@saint.com"
+                    className="text-decoration-none text-dark"
+                  >
+                    info@saint.com
+                  </a>
+                </p>
               </div>
-              <div className="col-6">
-                <p>LinkedinIn</p>
+
+              {/* Social Media Section */}
+              <div>
+                <h3
+                  className="text-secondary mb-3"
+                  style={{ fontSize: "clamp(1.1rem, 3vw, 1.5rem)" }}
+                >
+                  Follow Us
+                </h3>
+                <div className="row g-2">
+                  {socialLinks.map((social, index) => (
+                    <div key={index} className="col-6 col-sm-3 col-lg-6">
+                      <a
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="d-flex align-items-center text-decoration-none text-dark p-2 rounded hover-link"
+                        style={{
+                          transition: "all 0.3s ease",
+                          fontSize: "clamp(0.8rem, 2vw, 0.95rem)",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          icon={social.icon}
+                          className="text-dark me-2"
+                          style={{ fontSize: "1rem" }}
+                        />
+                        {social.name}
+                      </a>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="row " style={{ height: "7rem" }} />
+
+        {/* Bottom Spacing */}
+        <div className="row d-none d-lg-block" style={{ height: "7rem" }} />
+        <div
+          className="row d-none d-md-block d-lg-none"
+          style={{ height: "4rem" }}
+        />
+        <div className="row d-block d-md-none" style={{ height: "2rem" }} />
       </div>
+
+
     </>
   );
 }
